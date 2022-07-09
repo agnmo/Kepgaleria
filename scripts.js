@@ -25,6 +25,13 @@ let data3 = {
 
 let currentPhoto = [data0, data1, data2, data3,];
 
+function loadPhoto() {
+    $('#photo').attr('src',currentPhoto[i].photo);
+    $('#photoTitle').text(currentPhoto[i].title);
+    $('#photoDescription').text(currentPhoto[i].description);
+}
+
+
 /* jobba-balra nyilakkal való navigálás*/
 
 let i = 0 /* current photo index */
@@ -33,14 +40,7 @@ let j = 4/*a thumbnailek száma*/
 $(`#right`).click(() =>{
     i++;
     i = i % j;
-
-    console.log(i)
-
-    console.log(currentPhoto[i].photo)
-
-    $('#photo').attr('src',currentPhoto[i].photo);
-    $('#photoTitle').text(currentPhoto[i].title);
-    $('#photoDescription').text(currentPhoto[i].description);
+    loadPhoto()
 })
 
 $(`#left`).click(() =>{
@@ -48,29 +48,16 @@ $(`#left`).click(() =>{
     i = i % j;
     if (i < 0){
         i = i + j
-    }
-    console.log(i)
-
-    console.log(currentPhoto[i].photo)
-
-    $('#photo').attr('src',currentPhoto[i].photo);
-    $('#photoTitle').text(currentPhoto[i].title);
-    $('#photoDescription').text(currentPhoto[i].description);
+    };
+    loadPhoto()
 })
-
-
-
-
-
 
 
 /*thumbnailre való kattintástól fotóváltás */
 $(".thumbnail").click(() => {
        /*console.log(event.target.id);*/
        i = event.target.id;
-    
-       $('#photo').attr('src',currentPhoto[i].photo);
-       $('#photoTitle').text(currentPhoto[i].title);
-       $('#photoDescription').text(currentPhoto[i].description);
+
+       loadPhoto()
 })
 
